@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Compound Interest Calculator</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header class="header">
+            <h1>Compound Interest Calculator</h1>
+        </header>
+
+        <main>
+            <section class="container">
+                <div class="ii-container">
+                    <label for="initial-investment">Initial Investment:</label>
+                    <select name="" id="">
+                        <option value="rupee" selected>₹</option>
+                        <option value="dollar">$</option>
+                    </select>
+                    <input type="number" id="initial-investment" />
+                </div>
+
+                <div class="ir-container">
+                    <label for="interest-rate">Interest Rate:</label>
+                    <div class="group-ir-and-select">
+                        <div class="group-input-percentage">
+                            <div>
+                                <input type="number" id="ir" />
+                            </div>
+                            <div>%</div>
+                        </div>
+                        <select name="" id="">
+                            <option value="monthly" selected>Monthly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Made by Sachin Kumar</p>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>
