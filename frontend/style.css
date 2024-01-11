@@ -19,6 +19,80 @@ body {
     background-color: #3d3b40;
 }
 
+h1,
+p {
+    margin: 0;
+}
+
+h1 {
+    color: #3d3b40;
+}
+
+p {
+    color: #ffdd95;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    color: #ffe5e5;
+    margin-bottom: 0.25rem;
+}
+
+button {
+    color: #eef5ff;
+    background-color: #525ceb;
+    border: 1px solid #ffe5e5;
+    border-radius: 0.25rem;
+    padding: 8px 32px;
+    font-size: 16px;
+    font-family: "Noto Sans", sans-serif;
+}
+
+button:hover {
+    background-color: #3468c0;
+}
+
+button:active {
+    box-shadow: 0px 0 2px 4px rgba(52, 104, 192, 0.5);
+    transition: box-shadow 100ms;
+    transition-timing-function: linear;
+}
+
+select,
+input {
+    height: 40px;
+    font-size: 16px;
+    color: #eef5ff;
+    background-color: inherit;
+    border: 1px solid #eef5ff;
+    border-radius: 0.25rem;
+    padding: 8px;
+}
+
+select {
+    margin-right: 0.5rem;
+}
+
+option {
+    color: #eef5ff;
+    background-color: #3d3b40;
+}
+
+select:focus,
+input:focus {
+    outline: none;
+    box-shadow: 0px 0 2px 4px rgba(52, 104, 192, 0.5);
+    transition: box-shadow 200ms;
+    transition-timing-function: linear;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .header {
     width: 100%;
     height: 90px;
@@ -44,25 +118,73 @@ main {
     flex-direction: column;
 }
 
-ii-container,
-ir-container {
+.principle-box,
+.rate-box,
+.year-box,
+.additional-deposits,
+.annual-percent-increase {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1rem;
 }
 
-.group-ir-and-select {
+.compound-period {
+    margin-bottom: 1rem;
+}
+
+.principle-box-2,
+.rate-box-2,
+.additional-deposits-2,
+.annual-percent-increase-2 {
     display: flex;
 }
 
-.group-input-percentage {
+#rate,
+#yearly-increment {
+    width: 96px;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.percent-icon {
+    border: 1px solid #eef5ff;
+    border-left: none;
+    border-radius: 0.25rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-right: 0.5rem;
+}
+
+.percent-icon,
+.currency-icon {
+    width: 32px;
+    height: 40px;
+    color: #eef5ff;
+
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#ir {
-    border: none;
+#year {
+    width: 128px;
 }
 
-#interest-rate {
-    width: 100px;
+.currency-icon {
+    border: 1px solid #eef5ff;
+    border-radius: 0.25rem;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#deposits {
+    width: 96px;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-right: 0.5rem;
 }
 
 .footer {
@@ -73,58 +195,4 @@ ir-container {
     align-items: center;
     position: sticky;
     bottom: 0;
-}
-
-h1,
-p {
-    margin: 0;
-}
-
-h1 {
-    color: #3d3b40;
-}
-
-p {
-    color: #ffdd95;
-}
-
-label {
-    display: block;
-    font-size: 16px;
-    color: #ffe5e5;
-    margin-bottom: 0.5rem;
-}
-
-input {
-    font-size: 16px;
-    color: #fff;
-    background-color: inherit;
-    border: 1px solid #eef5ff;
-    border-radius: 0.25rem;
-    margin-right: 0.5rem;
-    padding: 8px 8px;
-}
-
-select {
-    background-color: inherit;
-    color: #fff;
-    border: 1px solid #eef5ff;
-    border-radius: 0.25rem;
-    font-size: 16px;
-    padding: 8px 16px;
-    margin-right: 0.5rem;
-    transition: box-shadow 100ms;
-    transition-timing-function: linear;
-}
-
-select:focus,
-input:focus {
-    outline: none;
-    box-shadow: 0 0 2px 4px rgba(52, 104, 192, 0.5);
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
 }

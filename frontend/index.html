@@ -13,29 +13,67 @@
 
         <main>
             <section class="container">
-                <div class="ii-container">
-                    <label for="initial-investment">Initial Investment:</label>
-                    <select name="" id="">
-                        <option value="rupee" selected>₹</option>
-                        <option value="dollar">$</option>
-                    </select>
-                    <input type="number" id="initial-investment" />
+                <div class="principle-box">
+                    <label for="principle">Initial Investment:</label>
+                    <div class="principle-box-2">
+                        <select id="currency-selector">
+                            <option value="rupee" selected>₹</option>
+                            <option value="dollar">$</option>
+                        </select>
+                        <input type="number" id="principle" />
+                    </div>
                 </div>
 
-                <div class="ir-container">
-                    <label for="interest-rate">Interest Rate:</label>
-                    <div class="group-ir-and-select">
-                        <div class="group-input-percentage">
-                            <div>
-                                <input type="number" id="ir" />
-                            </div>
-                            <div>%</div>
-                        </div>
-                        <select name="" id="">
+                <div class="rate-box">
+                    <label for="rate">Interest Rate:</label>
+                    <div class="rate-box-2">
+                        <input type="number" id="rate" />
+                        <div class="percent-icon">%</div>
+                        <select>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly" selected>Yearly</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="year-box">
+                    <label for="year">Years:</label>
+                    <input type="text" id="year" />
+                </div>
+
+                <div class="additional-deposits">
+                    <label for="deposits">Deposit amount: (optional)</label>
+                    <div class="additional-deposits-2">
+                        <div class="currency-icon">₹</div>
+                        <input type="number" id="deposits" />
+                        <select>
                             <option value="monthly" selected>Monthly</option>
                             <option value="yearly">Yearly</option>
                         </select>
                     </div>
+                </div>
+
+                <div class="annual-percent-increase">
+                    <label for="yearly-increment"
+                        >Annual deposit % increase: (optional)</label
+                    >
+                    <div class="annual-percent-increase-2">
+                        <input type="number" id="yearly-increment" />
+                        <div class="percent-icon">%</div>
+                    </div>
+                </div>
+
+                <div class="compound-period">
+                    <label for="">Compound Interval:</label>
+
+                    <select>
+                        <option value="monthly" selected>Monthly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button>Calculate</button>
                 </div>
             </section>
         </main>
