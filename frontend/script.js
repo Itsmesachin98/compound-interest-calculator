@@ -1,37 +1,32 @@
-const principle = document.getElementById("principle");
-const rate = document.getElementById("rate");
-const year = document.getElementById("year");
-const deposit = document.getElementById("deposit");
-const button = document.getElementById("button");
-const options = document.getElementById("options");
+const inputContainer = document.querySelectorAll(".input-container");
+const currencyStats = document.getElementById("currency-stats");
+const currencyIcon = document.querySelector(".currency-icon");
 
-// This function triggers when the calculate button is clicked
-button.addEventListener("click", () => {
-    sendDataToServer();
+currencyStats.addEventListener("click", () => {
+    const index = currencyStats.selectedIndex;
+    const value = currencyStats.options[index].innerText;
+
+    if (value === "₹") {
+        currencyIcon.innerText = "₹";
+    } else if (value === "$") {
+        currencyIcon.innerText = "$";
+    } else {
+        currencyIcon.innerText = "₹";
+    }
 });
 
-// This function sends the data to the backend server
-const sendDataToServer = async () => {
-    const allInput = {
-        principle: principle.value,
-        rate: rate.value,
-        year: year.value,
-        deposit: deposit.value,
-        options: options.value,
-    };
+const toggleAnimationClass = (value) => {
+    value.addEventListener("click", () => {
+        value.classList.add("box-shadow-animation");
 
-    try {
-        const response = await fetch("http://localhost:8080/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(allInput),
+        document.body.addEventListener("click", (evt) => {
+            if (!value.contains(evt.target)) {
+                value.classList.remove("box-shadow-animation");
+            }
         });
-
-        const result = await response.json();
-        console.log(result);
-    } catch (err) {
-        console.log("Error occured: ", err);
-    }
+    });
 };
+
+for (let container of inputContainer) {
+    toggleAnimationClass(container);
+}

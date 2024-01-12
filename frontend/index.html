@@ -13,22 +13,26 @@
 
         <main>
             <section class="container">
-                <div class="principle-box">
+                <div class="column-container">
                     <label for="principle">Initial Investment:</label>
-                    <div class="principle-box-2">
-                        <select id="currency-selector">
+                    <div class="row-container">
+                        <select id="currency-stats">
                             <option value="rupee" selected>₹</option>
                             <option value="dollar">$</option>
                         </select>
-                        <input type="number" id="principle" />
+                        <div class="input-container principle-container">
+                            <input type="number" id="principle" />
+                        </div>
                     </div>
                 </div>
 
-                <div class="rate-box">
+                <div class="column-container">
                     <label for="rate">Interest Rate:</label>
-                    <div class="rate-box-2">
-                        <input type="number" id="rate" />
-                        <div class="percent-icon">%</div>
+                    <div class="row-container">
+                        <div class="input-container rate-container">
+                            <input type="number" id="rate" />
+                            <div class="icon percent-icon">%</div>
+                        </div>
                         <select>
                             <option value="monthly">Monthly</option>
                             <option value="yearly" selected>Yearly</option>
@@ -36,16 +40,20 @@
                     </div>
                 </div>
 
-                <div class="year-box">
+                <div class="column-container">
                     <label for="year">Years:</label>
-                    <input type="text" id="year" />
+                    <div class="input-container year-container">
+                        <input type="text" id="year" />
+                    </div>
                 </div>
 
-                <div class="additional-deposits">
+                <div class="column-container">
                     <label for="deposits">Deposit amount: (optional)</label>
-                    <div class="additional-deposits-2">
-                        <div class="currency-icon">₹</div>
-                        <input type="number" id="deposits" />
+                    <div class="row-container">
+                        <div class="input-container deposits-container">
+                            <div class="icon currency-icon">₹</div>
+                            <input type="number" id="deposits" />
+                        </div>
                         <select>
                             <option value="monthly" selected>Monthly</option>
                             <option value="yearly">Yearly</option>
@@ -53,23 +61,26 @@
                     </div>
                 </div>
 
-                <div class="annual-percent-increase">
-                    <label for="yearly-increment"
-                        >Annual deposit % increase: (optional)</label
-                    >
-                    <div class="annual-percent-increase-2">
-                        <input type="number" id="yearly-increment" />
-                        <div class="percent-icon">%</div>
+                <div class="column-container">
+                    <label for="yearly-increment">
+                        Annual deposit % increase: (optional)
+                    </label>
+                    <div class="row-container">
+                        <div class="input-container yearly-increment-container">
+                            <input type="number" id="yearly-increment" />
+                            <div class="icon percent-icon">%</div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="compound-period">
-                    <label for="">Compound Interval:</label>
-
-                    <select>
-                        <option value="monthly" selected>Monthly</option>
-                        <option value="yearly">Yearly</option>
-                    </select>
+                <div class="column-container">
+                    <label for="compound-interval">Compound Interval:</label>
+                    <div class="row-container">
+                        <select id="compound-interval">
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly" selected>Yearly</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div>
@@ -77,10 +88,6 @@
                 </div>
             </section>
         </main>
-
-        <footer class="footer">
-            <p>Made by Sachin Kumar</p>
-        </footer>
         <script src="script.js"></script>
     </body>
 </html>

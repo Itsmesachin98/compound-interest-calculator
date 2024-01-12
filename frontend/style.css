@@ -40,7 +40,7 @@ label {
 }
 
 button {
-    color: #eef5ff;
+    color: #fff;
     background-color: #525ceb;
     border: 1px solid #ffe5e5;
     border-radius: 0.25rem;
@@ -54,18 +54,17 @@ button:hover {
 }
 
 button:active {
-    box-shadow: 0px 0 2px 4px rgba(52, 104, 192, 0.5);
+    box-shadow: 0px 0 0px 4px rgba(52, 104, 192, 0.5);
     transition: box-shadow 100ms;
     transition-timing-function: linear;
 }
 
-select,
-input {
+select {
     height: 40px;
     font-size: 16px;
-    color: #eef5ff;
+    color: #fff;
     background-color: inherit;
-    border: 1px solid #eef5ff;
+    border: 1px solid #fff;
     border-radius: 0.25rem;
     padding: 8px;
 }
@@ -74,23 +73,44 @@ select {
     margin-right: 0.5rem;
 }
 
+input {
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    background-color: inherit;
+    border: none;
+    padding: 0;
+}
+
 option {
     color: #eef5ff;
     background-color: #3d3b40;
 }
 
-select:focus,
+select:focus {
+    outline: none;
+    border: 1px solid rgb(52, 104, 192) !important;
+    box-shadow: 0px 0 0px 4px rgba(52, 104, 192, 0.5);
+    transition: box-shadow 200ms, border 200ms;
+    transition-timing-function: linear;
+}
+
 input:focus {
     outline: none;
-    box-shadow: 0px 0 2px 4px rgba(52, 104, 192, 0.5);
-    transition: box-shadow 200ms;
-    transition-timing-function: linear;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.box-shadow-animation {
+    border: 1px solid rgb(52, 104, 192) !important;
+    box-shadow: 0px 0 0px 4px rgba(52, 104, 192, 0.5);
+    transition: box-shadow 200ms, border 200ms;
+    transition-timing-function: linear;
 }
 
 .header {
@@ -114,85 +134,52 @@ main {
     width: 400px;
     padding: 32px;
     border: 1px solid #607274;
+    border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
 }
 
-.principle-box,
-.rate-box,
-.year-box,
-.additional-deposits,
-.annual-percent-increase {
+.column-container {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
 }
 
-.compound-period {
-    margin-bottom: 1rem;
-}
-
-.principle-box-2,
-.rate-box-2,
-.additional-deposits-2,
-.annual-percent-increase-2 {
+.row-container {
     display: flex;
 }
 
-#rate,
-#yearly-increment {
-    width: 96px;
-    border-right: none;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+.input-container {
+    height: 40px;
+    background-color: inherit;
+    border: 1px solid #fff;
+    border-radius: 0.25rem;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.principle-container {
+    width: 224px;
+}
+
+.rate-container,
+.year-container,
+.deposits-container,
+.yearly-increment-container {
+    width: 112px;
+    margin-right: 0.5rem;
+}
+
+.icon {
+    color: #fff;
 }
 
 .percent-icon {
-    border: 1px solid #eef5ff;
-    border-left: none;
-    border-radius: 0.25rem;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    margin-right: 0.5rem;
-}
-
-.percent-icon,
-.currency-icon {
-    width: 32px;
-    height: 40px;
-    color: #eef5ff;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#year {
-    width: 128px;
+    padding-left: 8px;
 }
 
 .currency-icon {
-    border: 1px solid #eef5ff;
-    border-radius: 0.25rem;
-    border-right: none;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-#deposits {
-    width: 96px;
-    border-left: none;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    margin-right: 0.5rem;
-}
-
-.footer {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: sticky;
-    bottom: 0;
+    padding-right: 8px;
 }
