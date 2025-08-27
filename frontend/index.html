@@ -4,90 +4,90 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Compound Interest Calculator</title>
-        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        />
     </head>
     <body>
-        <header class="header">
-            <h1>Compound Interest Calculator</h1>
-        </header>
+        <div class="container mt-5">
+            <form action="">
+                <div class="mb-3">
+                    <label for="principal" class="form-label"
+                        >Initial Investment</label
+                    >
+                    <input
+                        type="number"
+                        id="principal"
+                        class="form-control"
+                        name="principal"
+                        required
+                    />
+                </div>
 
-        <main>
-            <section class="container">
-                <div class="column-container">
-                    <label for="principle">Initial Investment:</label>
-                    <div class="row-container">
-                        <select id="currency-stats">
-                            <option value="rupee" selected>₹</option>
-                            <option value="dollar">$</option>
-                        </select>
-                        <div class="input-container principle-container">
-                            <input type="number" id="principle" />
+                <div class="mb-3">
+                    <label for="rate" class="form-label"
+                        >Rate of Interest</label
+                    >
+                    <input
+                        type="number"
+                        id="rate"
+                        class="form-control"
+                        name="rate"
+                        required
+                    />
+                </div>
+
+                <div class="mb-3">
+                    <label for="time" class="form-label">Years</label>
+                    <input
+                        type="number"
+                        id="time"
+                        class="form-control"
+                        name="time"
+                        required
+                    />
+                </div>
+
+                <div class="mb-3">
+                    <label for="d-amount" class="form-label"
+                        >Deposite Amount (Optional)</label
+                    >
+                    <div class="row">
+                        <div class="col-8">
+                            <input
+                                type="number"
+                                id="d-amount"
+                                class="form-control"
+                                name="d-amount"
+                                required
+                            />
                         </div>
-                    </div>
-                </div>
-
-                <div class="column-container">
-                    <label for="rate">Interest Rate:</label>
-                    <div class="row-container">
-                        <div class="input-container rate-container">
-                            <input type="number" id="rate" />
-                            <div class="icon percent-icon">%</div>
+                        <div class="col-4">
+                            <select class="form-select">
+                                <option value="year" selected>Yearly</option>
+                                <option value="month">Monthly</option>
+                            </select>
                         </div>
-                        <select>
-                            <option value="monthly">Monthly</option>
-                            <option value="yearly" selected>Yearly</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="column-container">
-                    <label for="year">Years:</label>
-                    <div class="input-container year-container">
-                        <input type="text" id="year" />
-                    </div>
-                </div>
-
-                <div class="column-container">
-                    <label for="deposits">Deposit amount: (optional)</label>
-                    <div class="row-container">
-                        <div class="input-container deposits-container">
-                            <div class="icon currency-icon">₹</div>
-                            <input type="number" id="deposits" />
-                        </div>
-                        <select>
-                            <option value="monthly" selected>Monthly</option>
-                            <option value="yearly">Yearly</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="column-container">
-                    <label for="yearly-increment">
-                        Annual deposit % increase: (optional)
-                    </label>
-                    <div class="row-container">
-                        <div class="input-container yearly-increment-container">
-                            <input type="number" id="yearly-increment" />
-                            <div class="icon percent-icon">%</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column-container">
-                    <label for="compound-interval">Compound Interval:</label>
-                    <div class="row-container">
-                        <select id="compound-interval">
-                            <option value="monthly">Monthly</option>
-                            <option value="yearly" selected>Yearly</option>
-                        </select>
                     </div>
                 </div>
 
                 <div>
-                    <button>Calculate</button>
+                    <button class="btn btn-primary">Calculate</button>
                 </div>
-            </section>
-        </main>
-        <script src="script.js"></script>
+            </form>
+        </div>
+
+        <!-- Script -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+            integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+            crossorigin="anonymous"
+        ></script>
     </body>
 </html>
