@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="container mt-5">
-            <form action="">
+            <form id="details" class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="principal" class="form-label"
                         >Initial Investment</label
@@ -64,7 +64,11 @@
                             />
                         </div>
                         <div class="col-4">
-                            <select class="form-select">
+                            <select
+                                id="choice"
+                                class="form-select"
+                                name="choice"
+                            >
                                 <option value="year" selected>Yearly</option>
                                 <option value="month">Monthly</option>
                             </select>
@@ -79,6 +83,7 @@
         </div>
 
         <!-- Script -->
+        <script src="script.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
