@@ -20,12 +20,16 @@ app.post(
     [validatePrincipal, validateRate, validateTime],
     async (req, res) => {
         try {
-            const n = 1;
             const { principal, time, choice } = req.body;
             let { rate } = req.body;
             rate = rate / 100;
-            let amount = principal * Math.pow(1 + rate / n, n * time);
-            res.json({ success: true, amount });
+
+            const futureValue = (principal * Math.pow(1 + rate, time)).toFixed(
+                2
+            );
+            const interestEarned = (futureValue - principal).toFixed(2);
+
+            res.json({ success: true, futureValue, interestEarned });
         } catch (err) {
             console.error("Server error", err);
             res.status(500).json({ success: false, message: "Server error" });

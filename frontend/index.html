@@ -10,8 +10,8 @@
         />
     </head>
     <body>
-        <div class="container mt-5">
-            <form id="details" class="needs-validation" novalidate>
+        <div id="top-wrapper" class="container mt-5">
+            <form id="details" class="needs-validation mb-5" novalidate>
                 <div class="mb-3">
                     <label for="principal" class="form-label"
                         >Initial Investment</label
@@ -60,7 +60,6 @@
                                 id="d-amount"
                                 class="form-control"
                                 name="d-amount"
-                                required
                             />
                         </div>
                         <div class="col-4">
@@ -80,6 +79,21 @@
                     <button class="btn btn-primary">Calculate</button>
                 </div>
             </form>
+
+            <!-- <div class="d-flex flex-column flex-md-row gap-4">
+                <div class="flex-fill bg-primary text-white p-3 rounded">
+                    <span class="d-block fs-5">Future Value</span>
+                    <span class="d-block fs-2">20,00,000</span>
+                </div>
+                <div class="flex-fill bg-success text-white p-3 rounded">
+                    <span class="d-block fs-5">Interest Earned</span>
+                    <span class="d-block fs-2">20,00,000</span>
+                </div>
+                <div class="flex-fill bg-warning text-dark p-3 rounded">
+                    <span class="d-block fs-5">Initial Value</span>
+                    <span class="d-block fs-2">20,00,000</span>
+                </div>
+            </div> -->
         </div>
 
         <!-- Script -->
