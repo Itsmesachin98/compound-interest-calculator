@@ -21,17 +21,20 @@
         const choice = document.getElementById("choice").value;
 
         try {
-            const res = await fetch("http://localhost:3000/investment", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    principal,
-                    rate,
-                    time,
-                    deposits,
-                    choice,
-                }),
-            });
+            const res = await fetch(
+                "https://compound-interest-calculator-v17c.onrender.com/investment",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        principal,
+                        rate,
+                        time,
+                        deposits,
+                        choice,
+                    }),
+                }
+            );
 
             const data = await res.json();
 
