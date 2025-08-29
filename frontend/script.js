@@ -63,13 +63,19 @@ const calculateBtn = document.getElementById("calculate");
             if (data.success) {
                 if (!document.getElementById("output-container")) {
                     const overlayContainer = createOverlayContainer();
-                    const outputContainer = renderOutput();
+                    const outputContainer = createOutputContainer();
                     overlayContainer.appendChild(outputContainer);
                     topWrapper.appendChild(overlayContainer);
                 }
-                injectValues(data.futureValue, data.interestEarned, principal);
+
+                const futureValue = formatNumber(data.futureValue);
+                const interestEarned = formatNumber(data.interestEarned);
+                const initialValue = formatNumber(principal);
+
+                injectValues(futureValue, interestEarned, initialValue);
             } else {
                 alert(data.message);
+
                 if (document.getElementById("output-container")) {
                     injectValues("NaN", "NaN", "NaN");
                 }
@@ -77,6 +83,7 @@ const calculateBtn = document.getElementById("calculate");
         } catch (err) {
             console.log("Server error: ", err);
             alert("Server error");
+
             if (document.getElementById("output-container")) {
                 injectValues("NaN", "NaN", "NaN");
             }
@@ -112,7 +119,7 @@ function createSpinner() {
     return spinner;
 }
 
-function renderOutput() {
+function createOutputContainer() {
     const outputContainer = document.createElement("div");
     outputContainer.classList.add(
         "d-flex",
@@ -160,4 +167,7 @@ function createOverlayContainer() {
     return overlayContainer;
 }
 
-// "https://compound-interest-calculator-v17c.onrender.com/investment",
+function formatNumber(value) {
+    const num = Number(value);
+    return num.toLocaleString("en-US");
+}
