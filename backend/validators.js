@@ -64,13 +64,28 @@ function validateDeposits(req, res, next) {
     }
 
     if (error) {
-        return res
-            .status(400)
-            .json({
-                success: false,
-                message:
-                    "The deposit amount can be empty, or between 1 and 1,000,000,000",
-            });
+        return res.status(400).json({
+            success: false,
+            message:
+                "The deposit amount can be empty, or between 1 and 1,000,000,000",
+        });
+    }
+
+    next();
+}
+
+function validateChoice(req, res, next) {
+    const { choice } = req.body;
+
+    const schema = Joi.string().valid("year", "month").required();
+
+    const { error } = schema.validate(choice);
+
+    if (error) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid choice. Must be 'year' or 'month'.",
+        });
     }
 
     next();
@@ -81,4 +96,5 @@ module.exports = {
     validateRate,
     validateTime,
     validateDeposits,
+    validateChoice,
 };

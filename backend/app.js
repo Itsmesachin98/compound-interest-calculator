@@ -6,6 +6,7 @@ const {
     validateRate,
     validateTime,
     validateDeposits,
+    validateChoice,
 } = require("./validators");
 
 app.use(cors());
@@ -18,7 +19,13 @@ app.get("/", (req, res) => {
 
 app.post(
     "/investment",
-    [validatePrincipal, validateRate, validateTime, validateDeposits],
+    [
+        validatePrincipal,
+        validateRate,
+        validateTime,
+        validateDeposits,
+        validateChoice,
+    ],
     async (req, res) => {
         try {
             const { principal, time, deposits, choice } = req.body;
@@ -69,12 +76,20 @@ function calculateWithoutDeposits(principal, rate, time) {
 
 function calculateWithDeposits(principal, rate, time, deposits, choice) {
     let mutualAmount = calculateWithoutDeposits(principal, rate, time);
+    let depositsAmount;
+    let futureValue, interestEarned;
 
-    const depositsAmount =
-        deposits * ((Math.pow(1 + rate / 12, time * 12) - 1) / (rate / 12));
-
-    const futureValue = Number(mutualAmount.futureValue) + depositsAmount;
-    const interestEarned = futureValue - (principal + deposits * time * 12);
+    if (choice === "year") {
+        const g = Math.pow(1 + rate / 12, 12);
+        depositsAmount = deposits * ((Math.pow(g, time) - 1) / (g - 1));
+        futureValue = Number(mutualAmount.futureValue) + depositsAmount;
+        interestEarned = futureValue - (principal + deposits * time);
+    } else {
+        depositsAmount =
+            deposits * ((Math.pow(1 + rate / 12, time * 12) - 1) / (rate / 12));
+        futureValue = Number(mutualAmount.futureValue) + depositsAmount;
+        interestEarned = futureValue - (principal + deposits * time * 12);
+    }
 
     return {
         futureValue: futureValue.toFixed(2),
