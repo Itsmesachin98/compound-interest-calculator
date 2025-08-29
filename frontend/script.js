@@ -17,13 +17,20 @@
         const principal = document.getElementById("principal").value;
         const rate = document.getElementById("rate").value;
         const time = document.getElementById("time").value;
+        const deposits = document.getElementById("deposits").value;
         const choice = document.getElementById("choice").value;
 
         try {
             const res = await fetch("http://localhost:3000/investment", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ principal, rate, time, choice }),
+                body: JSON.stringify({
+                    principal,
+                    rate,
+                    time,
+                    deposits,
+                    choice,
+                }),
             });
 
             const data = await res.json();
