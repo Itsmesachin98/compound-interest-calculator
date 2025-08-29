@@ -5,6 +5,7 @@ const {
     validatePrincipal,
     validateRate,
     validateTime,
+    validateDeposits,
 } = require("./validators");
 
 app.use(cors());
@@ -17,24 +18,68 @@ app.get("/", (req, res) => {
 
 app.post(
     "/investment",
-    [validatePrincipal, validateRate, validateTime],
+    [validatePrincipal, validateRate, validateTime, validateDeposits],
     async (req, res) => {
         try {
-            const { principal, time, choice } = req.body;
+            const { principal, time, deposits, choice } = req.body;
             let { rate } = req.body;
-            rate = rate / 100;
+            rate = Number(rate) / 100;
 
-            const futureValue = (principal * Math.pow(1 + rate, time)).toFixed(
-                2
-            );
-            const interestEarned = (futureValue - principal).toFixed(2);
+            let output;
 
-            res.json({ success: true, futureValue, interestEarned });
+            if (deposits === "") {
+                // Case 1: Empty
+                output = calculateWithoutDeposits(
+                    Number(principal),
+                    rate,
+                    Number(time)
+                );
+            } else {
+                // Case 2: Valid
+                output = calculateWithDeposits(
+                    Number(principal),
+                    rate,
+                    Number(time),
+                    Number(deposits),
+                    choice
+                );
+            }
+
+            return res.json({
+                success: true,
+                futureValue: output.futureValue,
+                interestEarned: output.interestEarned,
+            });
         } catch (err) {
             console.error("Server error", err);
             res.status(500).json({ success: false, message: "Server error" });
         }
     }
 );
+
+function calculateWithoutDeposits(principal, rate, time) {
+    const futureValue = principal * Math.pow(1 + rate / 12, time * 12);
+    const interestEarned = futureValue - principal;
+
+    return {
+        futureValue: futureValue.toFixed(2),
+        interestEarned: interestEarned.toFixed(2),
+    };
+}
+
+function calculateWithDeposits(principal, rate, time, deposits, choice) {
+    let mutualAmount = calculateWithoutDeposits(principal, rate, time);
+
+    const depositsAmount =
+        deposits * ((Math.pow(1 + rate / 12, time * 12) - 1) / (rate / 12));
+
+    const futureValue = Number(mutualAmount.futureValue) + depositsAmount;
+    const interestEarned = futureValue - (principal + deposits * time * 12);
+
+    return {
+        futureValue: futureValue.toFixed(2),
+        interestEarned: interestEarned.toFixed(2),
+    };
+}
 
 app.listen(3000, () => console.log(`LISTENING ON PORT 3000`));

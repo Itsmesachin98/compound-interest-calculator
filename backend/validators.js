@@ -42,4 +42,43 @@ function validateTime(req, res, next) {
     next();
 }
 
-module.exports = { validatePrincipal, validateRate, validateTime };
+function validateDeposits(req, res, next) {
+    const schema = Joi.string()
+        .allow("") // allow empty string
+        .pattern(/^\d+$/) // must be digits only, no spaces or decimals
+        .custom((value) => {
+            if (value === "") return value; // empty is fine
+
+            const num = Number(value);
+            if (num <= 0 || num >= 1000000000) {
+                throw new Error("Invalid deposit amount");
+            }
+            return value;
+        });
+
+    const { deposits } = req.body;
+    const { error, value } = schema.validate(deposits);
+
+    if (value === "") {
+        return next();
+    }
+
+    if (error) {
+        return res
+            .status(400)
+            .json({
+                success: false,
+                message:
+                    "The deposit amount can be empty, or between 1 and 1,000,000,000",
+            });
+    }
+
+    next();
+}
+
+module.exports = {
+    validatePrincipal,
+    validateRate,
+    validateTime,
+    validateDeposits,
+};
