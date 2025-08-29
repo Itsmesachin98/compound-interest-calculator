@@ -1,4 +1,5 @@
 const topWrapper = document.getElementById("top-wrapper");
+const calculateBtn = document.getElementById("calculate");
 
 (() => {
     "use strict";
@@ -33,6 +34,8 @@ const topWrapper = document.getElementById("top-wrapper");
             document.getElementById("spinner").classList.add("overlay");
         }
 
+        calculateBtn.disabled = true;
+
         try {
             const res = await fetch(
                 "https://compound-interest-calculator-v17c.onrender.com/investment",
@@ -54,6 +57,8 @@ const topWrapper = document.getElementById("top-wrapper");
             if (document.getElementById("spinner")) {
                 document.getElementById("spinner").remove();
             }
+
+            calculateBtn.disabled = false;
 
             if (data.success) {
                 if (!document.getElementById("output-container")) {
