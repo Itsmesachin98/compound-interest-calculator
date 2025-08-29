@@ -1,3 +1,5 @@
+const topWrapper = document.getElementById("top-wrapper");
+
 (() => {
     "use strict";
 
@@ -20,6 +22,17 @@
         const deposits = document.getElementById("deposits").value;
         const choice = document.getElementById("choice").value;
 
+        if (!document.getElementById("output-container")) {
+            if (!document.getElementById("spinner")) {
+                const spinner = createSpinner();
+                topWrapper.appendChild(spinner);
+            }
+        } else {
+            const spinner = createSpinner();
+            document.getElementById("overlay-container").prepend(spinner);
+            document.getElementById("spinner").classList.add("overlay");
+        }
+
         try {
             const res = await fetch(
                 "https://compound-interest-calculator-v17c.onrender.com/investment",
@@ -38,9 +51,16 @@
 
             const data = await res.json();
 
+            if (document.getElementById("spinner")) {
+                document.getElementById("spinner").remove();
+            }
+
             if (data.success) {
                 if (!document.getElementById("output-container")) {
-                    renderOutput();
+                    const overlayContainer = createOverlayContainer();
+                    const outputContainer = renderOutput();
+                    overlayContainer.appendChild(outputContainer);
+                    topWrapper.appendChild(overlayContainer);
                 }
                 injectValues(data.futureValue, data.interestEarned, principal);
             } else {
@@ -58,6 +78,34 @@
         }
     });
 })();
+
+function injectValues(futureValue, interestEarned, initialValue) {
+    document.getElementById("future-value").innerText = futureValue;
+    document.getElementById("interest-earned").innerText = interestEarned;
+    document.getElementById("initial-value").innerText = initialValue;
+}
+
+function createSpinner() {
+    const spinner = document.createElement("div");
+    spinner.classList.add(
+        "d-flex",
+        "justify-content-center",
+        "align-items-center"
+    );
+    spinner.id = "spinner";
+
+    const spinnerBorder = document.createElement("div");
+    spinnerBorder.classList.add("spinner-border");
+
+    const loading = document.createElement("span");
+    loading.classList.add("visually-hidden");
+    loading.innerText = "Loading...";
+
+    spinnerBorder.appendChild(loading);
+    spinner.appendChild(spinnerBorder);
+
+    return spinner;
+}
 
 function renderOutput() {
     const outputContainer = document.createElement("div");
@@ -96,11 +144,15 @@ function renderOutput() {
         outputContainer.appendChild(div);
     }
 
-    document.getElementById("top-wrapper").appendChild(outputContainer);
+    return outputContainer;
 }
 
-function injectValues(futureValue, interestEarned, initialValue) {
-    document.getElementById("future-value").innerText = futureValue;
-    document.getElementById("interest-earned").innerText = interestEarned;
-    document.getElementById("initial-value").innerText = initialValue;
+function createOverlayContainer() {
+    const overlayContainer = document.createElement("div");
+    overlayContainer.classList.add("position-relative");
+    overlayContainer.id = "overlay-container";
+
+    return overlayContainer;
 }
+
+// "https://compound-interest-calculator-v17c.onrender.com/investment",

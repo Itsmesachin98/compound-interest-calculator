@@ -8,6 +8,19 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         />
+
+        <style>
+            .overlay {
+                position: absolute;
+                inset: 0;
+                background: rgba(255, 255, 255, 0.4);
+                z-index: 10;
+
+                display: flex; /* center spinner */
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
     </head>
     <body>
         <div id="top-wrapper" class="container mt-5">
@@ -80,18 +93,37 @@
                 </div>
             </form>
 
-            <!-- <div class="d-flex flex-column flex-md-row gap-4">
-                <div class="flex-fill bg-primary text-white p-3 rounded">
-                    <span class="d-block fs-5">Future Value</span>
-                    <span class="d-block fs-2">20,00,000</span>
+            <!-- <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
                 </div>
-                <div class="flex-fill bg-success text-white p-3 rounded">
-                    <span class="d-block fs-5">Interest Earned</span>
-                    <span class="d-block fs-2">20,00,000</span>
+            </div> -->
+
+            <!-- <div class="position-relative">
+                Spinner Overlay
+                <div
+                    class="overlay d-flex justify-content-center align-items-center"
+                    id="spinner"
+                >
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                 </div>
-                <div class="flex-fill bg-warning text-dark p-3 rounded">
-                    <span class="d-block fs-5">Initial Value</span>
-                    <span class="d-block fs-2">20,00,000</span>
+
+                Your Cards
+                <div id="output" class="d-flex flex-column flex-md-row gap-4">
+                    <div class="flex-fill bg-primary text-white p-3 rounded">
+                        <span class="d-block fs-5">Future Value</span>
+                        <span class="d-block fs-2">20,00,000</span>
+                    </div>
+                    <div class="flex-fill bg-success text-white p-3 rounded">
+                        <span class="d-block fs-5">Interest Earned</span>
+                        <span class="d-block fs-2">20,00,000</span>
+                    </div>
+                    <div class="flex-fill bg-warning text-dark p-3 rounded">
+                        <span class="d-block fs-5">Initial Value</span>
+                        <span class="d-block fs-2">20,00,000</span>
+                    </div>
                 </div>
             </div> -->
         </div>
